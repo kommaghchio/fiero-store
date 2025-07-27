@@ -1,9 +1,15 @@
-hidden=[".config"]
-modules = ["web:v2-20230623-0b7a606"]
+hidden = [".config"]
+modules = ["python-3.11", "web"]
+run = "python -m http.server 8000"
 
 [deployment]
 publicDir = "/"
 deploymentTarget = "static"
+run = ["sh", "-c", "python3 -m http.server 8000"]
 
 [nix]
-channel = "stable-23_11"
+channel = "stable-25_05"
+
+[[ports]]
+localPort = 8000
+externalPort = 80
